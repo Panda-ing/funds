@@ -75,11 +75,11 @@ def get_details_info(fund_code):
         ds = row.to_dict()
         print("--" + str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";"))
         f.write(str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";") + "\n")
-
-    for index, row in tracking_index.iterrows():
-        ds = row.to_dict()
-        print("--" + str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";"))
-        f.write(str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";") + "\n")
+    if '基金投资风格' not in tracking_index.columns.values:
+        for index, row in tracking_index.iterrows():
+            ds = row.to_dict()
+            print("--" + str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";"))
+            f.write(str(ds).replace("{", "").replace("}", "").replace("'", "").replace(",", ";") + "\n")
 
 
 def get_fund_manager_info(fund_code):
